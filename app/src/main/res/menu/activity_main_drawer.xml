@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_country"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="By Country" />
+        <item
+            android:id="@+id/nav_station"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="By Station" />
+        <item
+            android:id="@+id/nav_today"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Today" />
+        <item
+            android:id="@+id/nav_week"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="This Week" />
+        <item
+            android:id="@+id/nav_month"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="This Month" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_feedback"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Feedback" />
+
+        </menu>
+    </item>
+
+</menu>
