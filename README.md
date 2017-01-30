@@ -13,14 +13,20 @@ Predictions can also be downloaded from the Bureau website @ http://www.bom.gov.
 ### Features
 
 Embedded Tide Table and Prediction Times (in Local and UTC Timezones) for High and Low Tides
+
 Weekly and Monthly Charting
+
 100% Offline with Geolocation (No Internet Connectivy Required)
 
 ### Installation
 
 Android 4.4+ (Kitkat) Device Required (~79% of Global Android Devices) 
-Download the installation package from http://services.gsd.spc.int/pacifictidesapp using your device's internet browser, and Open with APK Installer app when prompted. You may be asked to enable "Allow Unknown Sources" in your settings.
+
+Download the installation package from http://services.gsd.spc.int/pacifictidesapp using your device's internet browser, and 
+
+Open with APK Installer app when prompted. You may be asked to enable "Allow Unknown Sources" in your settings.
 
 
 © Geoinformatics Section, Geoscience Division, Pacific Community (SPC)
+
 Email: ict4dev@spc.int
