@@ -9,9 +9,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -65,7 +67,7 @@ public class ListStation extends AppCompatActivity {
         //ArrayAdapter<String> adapterList = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, l);
         //lv.setAdapter(adapterList);
 
-        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
+        final List<Map<String, String>> data = new ArrayList<Map<String, String>>();
         for (int i = 0; i < count; i++){
             Map<String, String> map = new HashMap<String, String>(2);
             map.put("station", larea.get(i));
@@ -78,6 +80,21 @@ public class ListStation extends AppCompatActivity {
                 new int[]{android.R.id.text1,  android.R.id.text2});
 
         lv.setAdapter(adapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String station = data.get(position).get("station");
+                Toast.makeText(ListStation.this, station, Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("station", station);
+                startActivity(i);
+            }
+        });
+
+
 
 
     }

@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
@@ -54,19 +56,33 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //expand drawer on first use (if no preset area defined)
-        drawer.openDrawer(navigationView);
+        //custom
+        String country = "";
+        String country_code = "";
+        Date todayDate = new Date();
+        String nextHighTide = "TODO";
+        String nextLowTide = "TODO";
 
         Intent intent = getIntent();
         String station = Global.station;
 
         if (intent.getStringExtra("station") != null) {
             station = intent.getStringExtra("station");
+            Global.station = station;
+        } else {
+            //expand drawer on first use (if no preset area defined)
+            drawer.openDrawer(navigationView);
+        }
+
+        if (intent.getLongExtra("dateLong", 1L) > 1) {
+            //String dateLongString = intent.getStringExtra("dateLong");
+            //System.out.println("DATELONG = " + dateLongString);
+            todayDate = new Date(intent.getLongExtra("dateLong", 1L));
         }
 
         SimpleDateFormat sdf = new SimpleDateFormat("EEE d MMM"); //Sun 1 Jan
-        Date todayDate = new Date();
         String todayShort = sdf.format(todayDate);
+
 
 
         String sql = "select * from tides2017 where area='" + station + "' and short_date='" + todayShort + "';";
@@ -75,9 +91,6 @@ public class MainActivity extends AppCompatActivity
         int count = 0;
         sdf = new SimpleDateFormat("EEE d MMM"); //2017-01-30T01:59:00+12:00
 
-
-        String country = "";
-        String country_code = "";
         ArrayList<String> gridValues = new ArrayList<String>();
         gridValues.add("TIME");
         gridValues.add("  TYPE");
@@ -114,12 +127,45 @@ public class MainActivity extends AppCompatActivity
         GridView table = (GridView) findViewById(R.id.table);
         table.setAdapter(new TideTableAdapter(this, gridValues));
 
+
+        //next, previous
+        final Date currentDate = todayDate;
+        Button buttonPrevious = (Button) findViewById(R.id.buttonPrevious);
+        Button buttonNext = (Button) findViewById(R.id.buttonNext);
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("station", Global.station);
+                Calendar c = Calendar.getInstance();
+                c.setTime(currentDate);
+                c.add(Calendar.DAY_OF_MONTH, 1);
+                i.putExtra("dateLong", c.getTimeInMillis());
+                startActivity(i);
+            }
+        });
+        buttonPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("station", Global.station);
+                Calendar c = Calendar.getInstance();
+                c.setTime(currentDate);
+                c.add(Calendar.DAY_OF_MONTH, -1);
+                i.putExtra("dateLong", c.getTimeInMillis());
+                startActivity(i);
+            }
+        });
+
         //debug output
         TextView text = (TextView) findViewById(R.id.textView);
         text.setText(text.getText() + "\r\n" + station + ", " + country);
         text.setText(text.getText() + "\r\n" + todayDate.toString());
         text.setText(text.getText() + "\r\n" + todayShort);
         text.setText(text.getText() + "\r\n" + "Count: " + String.valueOf(count));
+
+
+
 
 
     }
@@ -171,7 +217,10 @@ public class MainActivity extends AppCompatActivity
             i.putExtra("country", "none");
             startActivity(i);
         } else if (id == R.id.nav_today) {
-
+            Intent i = new Intent(super.getApplicationContext(), MainActivity.class);
+            i.putExtra("station", Global.station);
+            i.putExtra("dateLong", new Date().getTime());
+            startActivity(i);
         } else if (id == R.id.nav_week) {
 
         } else if (id == R.id.nav_month) {

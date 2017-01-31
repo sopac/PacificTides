@@ -10,22 +10,25 @@ In order to ensure desimination of the tide calendars beyond the National Meteor
 
 Predictions can also be downloaded from the Bureau website @ http://www.bom.gov.au/oceanography/projects/spslcmp/tidecalendars.shtml
 
+---
+
 ### Features
 
-Embedded Tide Table and Prediction Times (in Local and UTC Timezones) for High and Low Tides
++ Embedded Tide Table and Prediction Times (in Local and UTC Timezones) for High and Low Tides
 
-Weekly and Monthly Charting
++ Weekly and Monthly Charting
 
-100% Offline with Geolocation (No Internet Connectivy Required)
++ 100% Offline with Geolocation (No Internet Connectivy Required)
 
 ### Installation
 
-Android 4.4+ (Kitkat) Device Required (~79% of Global Android Devices) 
++ Android 4.4+ (Kitkat) Device Required (~79% of Global Android Devices) 
 
-Download the installation package from http://services.gsd.spc.int/pacifictidesapp using your device's internet browser, and 
++ Download the installation package from http://services.gsd.spc.int/pacifictidesapp using your device's internet browser, and 
 
-Open with APK Installer app when prompted. You may be asked to enable "Allow Unknown Sources" in your settings.
++ Open with APK Installer app when prompted. You may be asked to enable "Allow Unknown Sources" in your settings.
 
+---
 
 © Geoinformatics Section, Geoscience Division, Pacific Community (SPC)
 
