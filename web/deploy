@@ -1,0 +1,5 @@
+jekyll clean
+jekyll b
+rsync -az _site/* -e ssh 192.168.20.32:/var/lib/tomcat7/webapps/ROOT/pacifictides
+#rsync -az _site/* -e ssh 192.168.20.32:/tmp/pacifictides
+
