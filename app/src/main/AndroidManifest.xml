@@ -14,8 +14,13 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.intent.action.SENDTO" />
+                <data android:scheme="mailto" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
@@ -25,6 +30,14 @@
         <activity
             android:name=".ListStation"
             android:label="@string/title_activity_list_station"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListMonth"
+            android:label="@string/title_activity_list_month"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListWeek"
+            android:label="@string/title_activity_list_week"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

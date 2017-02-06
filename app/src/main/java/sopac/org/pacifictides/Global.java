@@ -6,7 +6,7 @@ package sopac.org.pacifictides;
 
 public class Global {
 
-    public static String info = "© 2017, COSPPac Project, Geoscience Division, SPC";
+    public static String info = "© COSPPac Project, Geoscience Division, SPC";
 
     public static String station = "Suva";
 
